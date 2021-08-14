@@ -1,24 +1,49 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    users
 
-Things you may want to cover:
+nickname |
+email
+password
+password_verification
+last_name
+first_name
+last_name_kana
+first_name_kana
+birthday
 
-* Ruby version
 
-* System dependencies
+  items
 
-* Configuration
+image
+name
+description
+detail
+delivery_fee
+area
+days
+price
 
-* Database creation
 
-* Database initialization
+  sending
 
-* How to run the test suite
+  Postal_code
+  prefectures
+  municipalities
+  address
+  building_name
+  telephone_number
 
-* Services (job queues, cache servers, search engines, etc.)
+## Tabel名
 
-* Deployment instructions
+|Column|Type|Options|
+|------|----|-------|
+（ここに追記していく）
 
-* ...
+
+### Association
+（ここに追記していく）
+
+
+null: false	カラムが空の状態では保存できない
+unique: true	一意性のみ許可（同じ値は保存できない）
+foreign_key: true	外部キーを設定（別テーブルのカラムを参照する）
