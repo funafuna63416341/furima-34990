@@ -36,8 +36,8 @@ price
 ## Tabel名
 
 |Column|Type|Options|
-|------|----|-------|
-（ここに追記していく）
+|------|----|-------｜
+｜nickname｜string｜null:false｜
 
 
 ### Association
