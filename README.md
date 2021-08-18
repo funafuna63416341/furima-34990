@@ -38,7 +38,7 @@ price
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null:false|
-|email|text|null: false
+|email|text|null: false|
 |password|integer|null: false|
 |password_verification|integer|null: false|
 |last_name|string|null:false|
