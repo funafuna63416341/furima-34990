@@ -5,17 +5,18 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null:false|
-|email|string|null: false|
-|encrypted_password|integer|null: false|
+|email|string|null: false, unique: true|
+|encrypted_password|string|null: false|
 |last_name|string|null:false|
 |first_name|string|null:false|
 |last_name_kana|string|null:false|
 |first_name_kana|string|null:false|
 |birthday|date|null: false|
+|user|references |null:false,foreign_key: true |
 
 ## Association
-- has_many :item
-- has_many :purchase
+- has_many :items
+- has_many :purchases
 
 # itemsテーブル
 
@@ -23,15 +24,17 @@
 |------|----|-------|
 |name|string|null:false|
 |description|text|null:false|
-|detail|string|null:false|
-|delivery_fee|integer|null:false|
-|area|string|null:false|
+|detail_id|integer|null:false|
+|delivery_fee_id|integer|null:false|
+|area_id|integer|null:false|
+|days_id|integer|null:false|
 |prefectures_id|integer|null:false|
 |price|integer|null:false|
+|user|references |null:false,foreign_key: true |
 
 ## Association
 - belongs_to :user
-- belongs_to :purchase
+- has_one :purchase
 
 
 
@@ -39,12 +42,13 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user |references|unique: true,foreign_key: true |
-|item |references |foreign_key: true |
+|user |references|null:false,foreign_key: true |
+|item |references |null:false,foreign_key: true |
 ## Association
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :Shipping
 
 # Shippingsテーブル
 
@@ -56,14 +60,11 @@
 |address|string|null:false|
 |building_name|string|
 |telephone_number|string|null:false|
-|purchase|references|foreign_key: true|
-
-
-
+|purchase|references|null:false,foreign_key: true|
 
 
 ## Association
-
+- has_one :purchase
 
  
 
