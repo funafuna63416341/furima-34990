@@ -26,7 +26,7 @@
 |detail|string|null:false|
 |delivery_fee|integer|null:false|
 |area|string|null:false|
-|days|integer|null:false|
+|prefectures_id|integer|null:false|
 |price|integer|null:false|
 
 ## Association
@@ -50,18 +50,20 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|Postal_code|string|null:false
-|prefectures_id|string|null:false
-|municipalities|string|null:false
-|address|string|null:false
-|building_name|string|null:false
-|telephone_number|integer|null:false
+|Postal_code|string|null:false|
+|prefectures_id|integer|null:false|
+|municipalities|string|null:false|
+|address|string|null:false|
+|building_name|string|
+|telephone_number|string|null:false|
+|purchase|references|foreign_key: true|
+
+
 
 
 
 ## Association
-- belongs_to :user
-- belongs_to :item
+
 
  
 
