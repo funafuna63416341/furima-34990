@@ -5,24 +5,22 @@
 |Column|Type|Options|
 |------|----|-------|
 |nickname|string|null:false|
-|email|text|null: false|
-|password|integer|null: false|
-|password_verification|integer|null: false|
+|email|string|null: false|
+|encrypted_password|integer|null: false|
 |last_name|string|null:false|
 |first_name|string|null:false|
 |last_name_kana|string|null:false|
 |first_name_kana|string|null:false|
-|birthday|integer|null: false|
+|birthday|date|null: false|
 
 ## Association
-- has_many :items
+- has_many :item
 - has_many :purchase
 
 # itemsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|image|ActiveStorage||
 |name|string|null:false|
 |description|text|null:false|
 |detail|string|null:false|
@@ -32,24 +30,38 @@
 |price|integer|null:false|
 
 ## Association
-- belongs_to :users
+- belongs_to :user
 - belongs_to :purchase
 
-# purchaseテーブル
+
+
+# purchasesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|Postal_code|integer|null:false
-|prefectures|string|null:false
+|user |references|unique: true,foreign_key: true |
+|item |references |foreign_key: true |
+## Association
+
+- belongs_to :user
+- belongs_to :item
+
+# Shippingsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|Postal_code|string|null:false
+|prefectures_id|string|null:false
 |municipalities|string|null:false
-|address|integer|null:false
+|address|string|null:false
 |building_name|string|null:false
 |telephone_number|integer|null:false
 
 
 
 ## Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
+ 
 
