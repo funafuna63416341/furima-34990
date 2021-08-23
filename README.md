@@ -12,7 +12,7 @@
 |last_name_kana|string|null:false|
 |first_name_kana|string|null:false|
 |birthday|date|null: false|
-|user|references |null:false,foreign_key: true |
+
 
 ## Association
 - has_many :items
@@ -48,13 +48,13 @@
 
 - belongs_to :user
 - belongs_to :item
-- belongs_to :Shipping
+- has_one :shipping
 
 # Shippingsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|Postal_code|string|null:false|
+|postal_code|string|null:false|
 |prefectures_id|integer|null:false|
 |municipalities|string|null:false|
 |address|string|null:false|
@@ -64,7 +64,7 @@
 
 
 ## Association
-- has_one :purchase
+- belongs_to :purchase
 
  
 
