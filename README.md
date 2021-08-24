@@ -24,7 +24,7 @@
 |------|----|-------|
 |name|string|null:false|
 |description|text|null:false|
-|category|integer|null:false|
+|category_id|integer|null:false|
 |detail_id|integer|null:false|
 |delivery_fee_id|integer|null:false|
 |prefectures_id|integer|null:false|
