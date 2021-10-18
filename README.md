@@ -66,5 +66,8 @@
 ## Association
 - belongs_to :purchase
 
- 
+
+後から
+application_controllerに記入
+  before_action :authenticate_user!
 
