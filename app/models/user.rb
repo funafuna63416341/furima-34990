@@ -20,3 +20,7 @@ validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と�
   #has_many :items
   #has_many :purchases
 end
+
+
+
+
