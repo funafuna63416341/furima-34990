@@ -28,29 +28,29 @@ RSpec.describe Item, type: :model do
       it 'category_idが空では作成できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", "Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'detail_idが空では作成できない' do
         @item.detail_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Detail can't be blank", "Detail can't be blank")
+        expect(@item.errors.full_messages).to include("Detail can't be blank")
       end
 
       it 'delivery_fee_idが空では作成できない' do
         @item.delivery_fee_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee can't be blank", "Delivery fee can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
       it 'prefectures_idが空では作成できない' do
         @item.prefectures_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefectures can't be blank", "Prefectures can't be blank")
+        expect(@item.errors.full_messages).to include("Prefectures can't be blank")
       end
       it 'days_idが空では作成できない' do
         @item.days_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days can't be blank", "Days can't be blank")
+        expect(@item.errors.full_messages).to include("Days can't be blank")
       end
       it 'priceが空では作成できない' do
         @item.price = ''
@@ -67,29 +67,29 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーに「---」が選択されている場合は出品できない' do
         @item.category_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", "Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it '商品の状態に「---」が選択されている場合は出品できない' do
         @item.detail_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Detail can't be blank", "Detail can't be blank")
+        expect(@item.errors.full_messages).to include("Detail can't be blank")
       end
 
       it '配送料の負担に「---」が選択されている場合は出品できない' do
         @item.delivery_fee_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee can't be blank", "Delivery fee can't be blank")
+        expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
       it '発送元の地域に「---」が選択されている場合は出品できない' do
         @item.prefectures_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefectures can't be blank", "Prefectures can't be blank")
+        expect(@item.errors.full_messages).to include("Prefectures can't be blank")
       end
       it '発送までの日数に「---」が選択されている場合は出品できない' do
         @item.days_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days can't be blank", "Days can't be blank")
+        expect(@item.errors.full_messages).to include("Days can't be blank")
       end
 
       it '価格に半角数字以外が含まれている場合は出品できない' do
