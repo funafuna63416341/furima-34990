@@ -136,7 +136,7 @@
        <%  @items.each do |item| %>
         
       <li class='list'>
-      <div  class="content_post" style="background-image: url(<%= item.image %>);">
+      <div  class="content_post" style="background-image: url(<%=  %>);">
         <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
@@ -153,7 +153,7 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.delivery_fee_id	 %></span>
+            <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -168,7 +168,7 @@
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
-       <%elsif @items.nil? %> 
+       <%else %> 
       <li class='list'>
       
         <%= link_to '#' do %>
