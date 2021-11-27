@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
   extend ActiveHash::Associations::ActiveRecordExtensions
-
+  has_many :order
   belongs_to :category
   belongs_to :detail
   belongs_to :delivery_fee
