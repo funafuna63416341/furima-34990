@@ -14,6 +14,8 @@ RSpec.describe OrderShipping, type: :model do
         expect(@order_shipping).to be_valid
       end
       it '建物名は空でも保存できること' do
+        @order_shipping.building_name = ''
+        expect(@order_shipping).to be_valid
       end
     end
 
@@ -67,7 +69,7 @@ RSpec.describe OrderShipping, type: :model do
       end
 
       it '都道府県に「---」が選択されている場合は登録できない' do
-        @order_shipping.prefectures_id = 'o'
+        @order_shipping.prefectures_id = '1'
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Prefectures can't be blank")
       end
