@@ -1,22 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe OrderShipping, type: :model do
-  before do
-    user = FactoryBot.create(:user)
-    item = FactoryBot.create(:item)
-    @order_shipping = FactoryBot.build(:order_shipping, user_id: user.id, item_id: item.id)
-    sleep(1)
-  end
-
   describe '商品購入機能' do
+    before do
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      @order_shipping = FactoryBot.build(:order_shipping, user_id: user.id, item_id: item.id)
+      sleep(1)
+    end
+
     context '商品購入きる場合' do
       it '全ての値、tokenが存在すれば作成できる' do
         expect(@order_shipping).to be_valid
       end
+      it '建物名は空でも保存できること' do
+      end
     end
 
     context '商品購入できない場合' do
-      it 'tokenが空では登録できないこと' do
+      it 'tokenが空では購入できないこと' do
         @order_shipping.token = nil
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Token can't be blank")
@@ -76,8 +78,20 @@ RSpec.describe OrderShipping, type: :model do
         expect(@order_shipping.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
 
-      it '電話番号は11桁以内でないと登録できない' do
-        @order_shipping.telephone_number = '012345678901'
+      it '電話番号が9桁以下では購入できない' do
+        @order_shipping.telephone_number = '012345678'
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include('Telephone number 11桁以内')
+      end
+
+      it '電話番号が12桁以上では購入できない' do
+        @order_shipping.telephone_number = '0123456789012'
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include('Telephone number 11桁以内')
+      end
+
+      it '電話番号に半角数字以外が含まれている場合は購入できない' do
+        @order_shipping.telephone_number = '１２３４5678901'
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include('Telephone number 11桁以内')
       end

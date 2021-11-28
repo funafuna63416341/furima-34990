@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create]
 
   def index
     @order_shipping = OrderShipping.new
-    @item = Item.find(params[:item_id])
     if current_user.id == @item.user.id
       redirect_to root_path
     elsif @item.order.present?
@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_shipping = OrderShipping.new(order_shipping_params)
     if @order_shipping.valid?
       pay_item
@@ -28,6 +27,10 @@ class OrdersController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
   def order_shipping_params
     params.require(:order_shipping).permit(:postal_code, :prefectures_id, :municipalities, :address, :building_name, :telephone_number, :order).merge(
       user_id: current_user.id, item_id: params[:item_id], token: params[:token]
@@ -35,11 +38,11 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @item.price, # 商品の値段
-      card: order_shipping_params[:token], # カードトークン
-      currency: 'jpy'                 # 通貨の種類（日本円）
+      amount: @item.price,
+      card: order_shipping_params[:token],
+      currency: 'jpy'
     )
   end
 end

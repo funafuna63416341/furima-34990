@@ -5,9 +5,7 @@ FactoryBot.define do
     prefectures_id { 2 }
     municipalities { '岡崎市' }
     address { '5-18' }
+    building_name { '建物名' }
     telephone_number { '11111111111' }
-
-    user_id { 1 }
-    item_id	{ 1 }
   end
 end
